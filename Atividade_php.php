@@ -63,9 +63,90 @@
 	//Exercício 5
 	echo "<br>Exercício 5<br>";
 	$alt = 1.58;
-	$idd = 16;
-	$sx = 1; // Masculino 2 e Feminino 1 
-	for ($p=0; $p <= 5; $p++) { 
-		
+	$alt1=1.60;
+	$altM = 1.80;
+	$altMM = 0.00;
+	$altMrM = 0.00;
+	$altNrM = 0.00;
+	$altMrF = 0.00;
+	$altNrF = 0.00;
+	$altF = 0.00;
+	$iddM = 16;
+	$iddMM = 0;
+	$iddMmr = 0;
+	$iddF =19;
+	$iddFF = 0;
+	$iddFmr = 0;
+	$sx = 1; // Masculino 2 e Feminino 1
+	$contF = 0;
+	$contM = 0;
+
+	for ($p=0; $p <= 5; $p++) {
+		echo "<br>Digite seu sexo: ";
+		//sx
+		switch ($sx) {
+			case 1:
+				echo "<br>Digite sua altura:";
+				//Pega pelo alt
+				$contF++;
+				$altF = $alt + $altF;
+				if ($alt > $alt1) {
+					$altMrF = $alt;
+					$altNrF = $alt1;
+				}else {
+					$altMrF = $alt1;
+					$altNrF = $alt;
+				}
+				$alt1 = $alt;
+				echo "<br>Digite sua idade";
+				//pega pelo idd
+				if ($iddF < $iddFF) {
+					$iddFmr = $iddF;
+				}else{
+					$iddFmr = $iddFF;
+				}
+				$iddFF = $iddF;
+				break;
+			case 2:
+				echo "<br>Digite sua altura:";
+				//Pega pelo altM
+				$contM++;
+				if ($altM > $altMM) {
+					$altMrM = $altM;
+					$altNrM = $altMM;
+				}else {
+					$altMrM = $altMM;
+					$altNrM = $altM;
+				}
+				$altMM = $altM;
+				echo "<br>Digite sua idade";
+				//pega pelo idd
+				if ($iddM > $iddMM) {
+					$iddMmr = $iddM;
+				}else{
+					$iddMmr = $iddMM;
+				}
+				$iddMM = $iddM;
+				break;
+			default:
+				echo "Resposta inválida";
+		}
+
 	}
+
+	$altF = $altF / $contF;
+		if ($altMrM > $altMrF) {
+			echo "<br>A altura maior é: ".$altMrM;
+		}else{
+			echo "<br>A altura maior é: ".$altMrF;
+		}
+
+		if ($altNrM < $altNrF) {
+			echo "<br>A altura menor é: ".$altNrM;
+		}else{
+			echo "<br>A altura menor é: ".$altNrF;
+		}
+
+		print("<br>A média da altura das mulheres é: ".$altF);
+		print("<br>A idade do homem mais velho é: ".$iddMmr."<br>E a idade da mulher mais nova é: ".$iddFmr);
  ?>
